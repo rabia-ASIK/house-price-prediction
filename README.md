@@ -1,8 +1,18 @@
 # 🏠 House Price Prediction with Advanced Feature Engineering & Ensemble Learning
 
+## 🚀 Key Achievements
+
+- Achieved ~0.119 RMSE using CatBoost
+- Implemented advanced feature engineering with 100+ features
+- Applied skewness correction for improved model stability
+- Built ensemble model combining CatBoost, XGBoost, and LightGBM
+- Generated multiple Kaggle-ready submission files
+
 ## 📌 Project Overview
 
 This project aims to predict residential house prices in Ames, Iowa using advanced machine learning techniques.
+
+Unlike standard implementations, this project combines advanced feature engineering, skewness correction, and ensemble learning strategies to achieve high predictive performance.
 
 The main objective is to build a highly accurate regression model by combining:
 
@@ -80,6 +90,8 @@ Multiple models were tested:
 
 ### 🔥 Best Model: CatBoost
 
+CatBoost outperformed all other models due to its ability to handle categorical features effectively and capture complex nonlinear relationships.
+
 - Achieved lowest RMSE
 - Best generalization performance
 
@@ -151,6 +163,26 @@ This project demonstrates an end-to-end machine learning pipeline with a strong 
 - Ensemble learning
 
 It is designed to be production-ready and easily extensible.
+
+## 💡 Why This Project Stands Out
+
+Unlike basic implementations, this project focuses on:
+
+- Deep feature engineering
+- Model comparison and optimization
+- Ensemble learning strategies
+- Production-ready pipeline structure
+
+This makes it closer to real-world data science workflows rather than academic exercises.
+
+## 📌 Project Highlights
+
+- End-to-end machine learning pipeline
+- Advanced feature engineering with domain-driven insights
+- Model comparison and optimization
+- Ensemble learning implementation
+- Clean and reproducible project structure
+
 
 ---
 
