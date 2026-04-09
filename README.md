@@ -4,7 +4,9 @@
 
 In this project, I built an end-to-end machine learning pipeline to predict house prices using the Ames Housing dataset.
 
-Instead of focusing only on model performance, I aimed to understand how data preprocessing, feature engineering, and model selection impact the final result.
+Rather than focusing only on model performance, I tried to understand how data preprocessing and feature engineering affect the final result.
+
+> While working on this project, I realized that improving the data often matters more than trying more complex models.
 
 ---
 
@@ -29,6 +31,7 @@ The dataset includes structural, quality, and location-based attributes of house
 ## 🔍 Exploratory Data Analysis
 
 Before modeling, I analyzed the data to understand its structure and key relationships.
+> This part helped me better understand how raw data behaves before modeling.
 
 ### Target Distribution
 
@@ -36,13 +39,15 @@ Before modeling, I analyzed the data to understand its structure and key relatio
 
 The target variable is right-skewed, which can negatively affect model performance.
 
+> At first, I underestimated how skewed the target variable was, but this turned out to be one of the most important factors affecting model performance.
+
 ---
 
 ### Log Transformation
 
 ![Log Target](outputs/log_target_distribution.png)
 
-Applying log transformation stabilizes variance and improves learning.
+Log transformation stabilizes variance and improves learning.
 
 ---
 
@@ -51,6 +56,8 @@ Applying log transformation stabilizes variance and improves learning.
 ![Correlation](outputs/correlation_heatmap.png)
 
 Features like OverallQual and GrLivArea show strong correlation with price.
+
+> One thing that stood out was how strongly overall quality and living area influenced the price. This directly guided my feature engineering decisions.
 
 ---
 
@@ -88,7 +95,9 @@ Missing values are not random and require domain-based handling.
 
 ## 🧠 Feature Engineering
 
-This was the most important part of the project.
+This was the most impactful part of the project.
+
+> This was the part where I spent most of my time, and it had the biggest impact on performance.
 
 I created new features to better represent the data:
 
@@ -98,8 +107,10 @@ I created new features to better represent the data:
 - Ratio-based features  
 - Binary indicators (garage, basement, fireplace)
 
-👉 The most important feature:
+👉 The most important feature:  
 **Quality × Living Area**
+
+> Combining quality and living area into a single feature significantly improved the model, which showed me how powerful simple feature interactions can be.
 
 ---
 
@@ -123,8 +134,10 @@ I evaluated multiple models using cross-validation:
 - LightGBM  
 - CatBoost  
 
-CatBoost consistently gave the lowest error.
+CatBoost consistently gave the best results.
 
+> Initially, I expected all boosting models to perform similarly, but CatBoost consistently gave better results across folds.
+> Comparing different models helped me see how small changes in approach can affect performance.
 ---
 
 ## 🧠 Why CatBoost?
@@ -147,7 +160,7 @@ I combined:
 
 Using weighted averaging.
 
-This slightly improved generalization performance.
+> I didn’t expect a large improvement from the ensemble, but it helped make predictions slightly more stable.
 
 ---
 
@@ -174,9 +187,19 @@ This slightly improved generalization performance.
 
 ## 💡 Key Takeaways
 
-- Feature engineering had the biggest impact  
-- Data preprocessing directly affected performance  
+- Feature engineering turned out to be more important than model choice  
+- Proper preprocessing improved model stability  
 - Ensemble methods provided small but consistent improvements  
+
+---
+
+## 🏁 Conclusion
+
+This project made it clear that improving the data has a bigger impact than just trying more complex models.
+
+Most of the performance gain came from feature engineering and proper preprocessing rather than model complexity.
+
+> This project helped me understand that in real-world machine learning, the biggest improvements often come from better data representation rather than more complex algorithms.
 
 ---
 
