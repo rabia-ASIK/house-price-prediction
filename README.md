@@ -2,17 +2,17 @@
 
 ## 📌 Overview
 
-In this project, I built a machine learning model to predict house prices using the Ames Housing dataset.
+In this project, I built an end-to-end machine learning pipeline to predict house prices using the Ames Housing dataset.
 
-Rather than focusing only on model performance, I tried to understand how data preprocessing and feature engineering affect the results. The project follows a complete workflow from data analysis to model evaluation.
+Instead of focusing only on model performance, I aimed to understand how data preprocessing, feature engineering, and model selection impact the final result.
 
 ---
 
 ## 🚀 Key Results
 
 - RMSE: ~0.122 (CatBoost)  
-- Kaggle Public Score: 0.12212  
-- Ensemble model slightly improved overall stability  
+- Kaggle Public Score: **0.12212**  
+- Ensemble model provided slightly more stable predictions  
 
 ---
 
@@ -22,42 +22,90 @@ Rather than focusing only on model performance, I tried to understand how data p
 - 1459 test samples  
 - 79 original features  
 
-The dataset includes information about house structure, quality, and location.
+The dataset includes structural, quality, and location-based attributes of houses.
 
 ---
 
 ## 🔍 Exploratory Data Analysis
 
-Before modeling, I explored the dataset to understand its structure.
+Before modeling, I analyzed the data to understand its structure and key relationships.
 
-Main observations:
+### Target Distribution
 
-- The target variable was right-skewed  
-- Log transformation improved distribution  
-- Overall quality and living area were strongly correlated with price  
-- Location (neighborhood) had a significant effect  
+![Target](outputs/target_distribution.png)
+
+The target variable is right-skewed, which can negatively affect model performance.
+
+---
+
+### Log Transformation
+
+![Log Target](outputs/log_target_distribution.png)
+
+Applying log transformation stabilizes variance and improves learning.
+
+---
+
+### Correlation Analysis
+
+![Correlation](outputs/correlation_heatmap.png)
+
+Features like OverallQual and GrLivArea show strong correlation with price.
+
+---
+
+### Neighborhood Effect
+
+![Neighborhood](outputs/neighborhood_vs_price.png)
+
+Location has a significant impact on house prices.
+
+---
+
+### Quality vs Price
+
+![Quality](outputs/overallqual_vs_price.png)
+
+Higher quality houses clearly have higher prices.
+
+---
+
+### Living Area vs Price
+
+![Area](outputs/grlivarea_vs_price.png)
+
+Living area has a strong linear relationship with price.
+
+---
+
+### Missing Values
+
+![Missing](outputs/missing_values.png)
+
+Missing values are not random and require domain-based handling.
 
 ---
 
 ## 🧠 Feature Engineering
 
-This was the most impactful part of the project.
+This was the most important part of the project.
 
-I created new features to better represent the data, including:
+I created new features to better represent the data:
 
 - Total usable area  
 - Quality × area interaction  
-- House age and renovation age  
+- House age & renovation age  
 - Ratio-based features  
-- Binary indicators (garage, basement, fireplace, etc.)
+- Binary indicators (garage, basement, fireplace)
 
-The interaction between quality and living area turned out to be the most important feature.
+👉 The most important feature:
+**Quality × Living Area**
 
 ---
 
 ## ⚙️ Data Preprocessing
 
-- Missing values handled based on feature meaning  
+- Missing values handled using domain knowledge  
 - Outliers capped instead of removed  
 - Rare categories grouped  
 - Categorical variables encoded  
@@ -67,7 +115,7 @@ The interaction between quality and living area turned out to be the most import
 
 ## 🤖 Modeling
 
-I tested several models:
+I evaluated multiple models using cross-validation:
 
 - Random Forest  
 - Gradient Boosting  
@@ -75,15 +123,31 @@ I tested several models:
 - LightGBM  
 - CatBoost  
 
-CatBoost consistently gave the best validation results.
+CatBoost consistently gave the lowest error.
 
 ---
 
-## 🚀 Ensemble
+## 🧠 Why CatBoost?
 
-I also combined CatBoost, LightGBM, and XGBoost using weighted averaging.
+CatBoost performed better because:
 
-This provided a small improvement and made predictions more stable.
+- It handles complex tabular relationships well  
+- It is more robust to overfitting  
+- It provides stable predictions across folds  
+
+---
+
+## 🚀 Ensemble Learning
+
+I combined:
+
+- CatBoost  
+- LightGBM  
+- XGBoost  
+
+Using weighted averaging.
+
+This slightly improved generalization performance.
 
 ---
 
@@ -111,19 +175,16 @@ This provided a small improvement and made predictions more stable.
 ## 💡 Key Takeaways
 
 - Feature engineering had the biggest impact  
-- Proper preprocessing improved model stability  
-- Ensemble methods gave small but consistent gains  
+- Data preprocessing directly affected performance  
+- Ensemble methods provided small but consistent improvements  
 
 ---
 
-## 🛠️ Technologies
+## 🔗 Links
 
-- Python  
-- Pandas / NumPy  
-- Scikit-learn  
-- CatBoost  
-- LightGBM  
-- XGBoost  
+GitHub: https://github.com/rabia-ASIK/house-price-prediction  
+Medium: https://medium.com/@rrabia.asik/beyond-baseline-designing-a-production-level-house-price-prediction-system-with-feature-0ce4f247aa78  
+Kaggle: https://www.kaggle.com/rabiaas  
 
 ---
 
